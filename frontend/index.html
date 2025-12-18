@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!--
+      HARDENING (Chrome/Google Translate):
+      Some environments (e.g., Chrome Translate or DOM-altering extensions) can mutate text nodes
+      by wrapping/inserting elements. This can desync React's reconciler and crash with errors like:
+      "NotFoundError: Failed to execute 'insertBefore' on 'Node'..."
+      In this project we confirmed:
+        - Backend/DB CRUD works (items are created)
+        - Error occurs only in normal Chrome profile with Translate enabled
+        - Error disappears in Incognito (clean profile)
+      We keep Translate enabled, so we prevent automatic translation from mutating the app DOM.
+    -->
+    <meta name="google" content="notranslate" />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Stack FastAPI Project</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
